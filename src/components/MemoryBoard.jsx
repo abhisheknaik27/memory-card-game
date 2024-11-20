@@ -1,9 +1,11 @@
 import React, { useState } from 'react'
 import images from './Images';
 import './MemoryBoard.css';
+import { shuffle } from 'lodash';
 
 const MemoryBoard = () => {
-  const [cards, setCards] = useState([...images, ...images]);
+  const [cards, setCards] = useState(shuffle([...images, ...images]));
+  
   return (
     <div>
       <div className="board">
