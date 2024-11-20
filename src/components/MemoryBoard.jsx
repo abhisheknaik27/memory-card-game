@@ -5,7 +5,7 @@ import { shuffle } from 'lodash';
 
 const MemoryBoard = () => {
   const [cards, setCards] = useState(shuffle([...images, ...images]));
-  const [clicks, setClick] = useState();
+  const [clicks, setClicks] = useState(0);
   const [activeCards, setActiveCards] = useState([]);
   const [foundPairs, setFoundPairs] = useState([]);
 
@@ -22,10 +22,9 @@ const MemoryBoard = () => {
       setActiveCards([...activeCards, index]);
     }
     if(activeCards.length == 2){
-      
-      
       setActiveCards([index]);
     }
+    setClicks(clicks+1);
   }
   return (
     <div>
@@ -46,6 +45,9 @@ const MemoryBoard = () => {
         );
         })}
         
+      </div>
+      <div className="stats">
+        Clicks: {clicks}
       </div>
     </div>
   )
