@@ -8,8 +8,14 @@ const MemoryBoard = () => {
   const [clicks, setClicks] = useState(0);
   const [activeCards, setActiveCards] = useState([]);
   const [foundPairs, setFoundPairs] = useState([]);
+  const [won, setWon] = useState(false);
 
   function flipCards(index){
+    if(won){
+      setCards(shuffle([...images, ...images]));
+      setFoundPairs([]);
+      setWon(false);
+    }
     if(activeCards.length == 0){
       setActiveCards([index]);
     }
@@ -18,6 +24,9 @@ const MemoryBoard = () => {
       const secondIndex = index;
       if(cards[firstIndex] === cards[secondIndex]){
         setFoundPairs( [...foundPairs, firstIndex, secondIndex] );
+        if(foundPairs.length + 2 === cards.length){
+          setWon(true);
+        }
       }
       setActiveCards([...activeCards, index]);
     }
@@ -47,7 +56,10 @@ const MemoryBoard = () => {
         
       </div>
       <div className="stats">
-        Clicks: {clicks}
+        {won && (
+          <>Congrats You Won The Game </>
+        )}
+        Clicks: {clicks} &nbsp; Found Pairs: {foundPairs.length/2}
       </div>
     </div>
   )

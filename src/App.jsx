@@ -3,9 +3,13 @@ import MemoryBoard from './components/MemoryBoard'
 import './App.css';
 const App = () => {
   return (
-    <div>
-      <MemoryBoard />
-    </div>
+    <>
+      <div className='heading'> <h1> Memory Game </h1></div>
+      <div>
+        <MemoryBoard />
+      </div>
+    </>
+    
   )
 }
 

@@ -1,4 +1,10 @@
 body{
   background-color: #123;
-  padding: 20px;
+  padding: 10px;
+}
+.heading h1{
+  text-align: center;
+  color: beige;
+  font-size: 50px;
+  margin: 20px 0;
 }
