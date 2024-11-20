@@ -15,6 +15,7 @@ const MemoryBoard = () => {
       setCards(shuffle([...images, ...images]));
       setFoundPairs([]);
       setWon(false);
+      setClicks(0);
     }
     if(activeCards.length == 0){
       setActiveCards([index]);
