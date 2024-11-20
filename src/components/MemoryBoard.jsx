@@ -5,6 +5,7 @@ import { shuffle } from 'lodash';
 
 const MemoryBoard = () => {
   const [cards, setCards] = useState(shuffle([...images, ...images]));
+  const [clicks, setClick] = useState();
   const [activeCards, setActiveCards] = useState([]);
   const [foundPairs, setFoundPairs] = useState([]);
 
@@ -29,9 +30,11 @@ const MemoryBoard = () => {
   return (
     <div>
       <div className="board">
-        {cards.map((card, index) => (
-          <div 
-            className={"card-outer " + ((activeCards.indexOf(index) !== -1) ? "flipped" : '')}  
+        {cards.map((card, index) => {
+          const flippedToFront = (activeCards.indexOf(index) !== -1) || foundPairs.indexOf(index) !== -1;
+          return(
+            <div 
+            className={"card-outer " + (flippedToFront ? "flipped" : '')}  
             onClick={() => flipCards(index)}>
             <div className="card">
               <div className="front">
@@ -40,7 +43,8 @@ const MemoryBoard = () => {
               <div className="back" />
             </div>
           </div>
-        ))}
+        );
+        })}
         
       </div>
     </div>
