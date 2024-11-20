@@ -5,15 +5,17 @@ import { shuffle } from 'lodash';
 
 const MemoryBoard = () => {
   const [cards, setCards] = useState(shuffle([...images, ...images]));
-  const [activeCards, setActiveCards] = useState();
+  const [activeCards, setActiveCards] = useState([]);
   function flipCards(index){
-
+    setActiveCards([index]);
   }
   return (
     <div>
       <div className="board">
         {cards.map((card, index) => (
-          <div className="card-outer" onClick={() => flipCards(index)}>
+          <div 
+            className={"card-outer " + ((activeCards.indexOf(index) !== -1) ? "flipped" : '')}  
+            onClick={() => flipCards(index)}>
             <div className="card">
               <div className="front">
                 <img src={card} alt="" />

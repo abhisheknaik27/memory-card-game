@@ -34,10 +34,8 @@
     background-color: #468;
     transform:rotateY(180deg);
 }
+
 .card-outer.flipped .card{
-    transform: rotateY(0);
-}
-/* .card-outer.flipped .card{
     transform:rotateY(0);
 }
 
@@ -49,4 +47,4 @@
     color: #fff;
     padding: 20px 0;
     font-size: 2rem;
-} */
+}
